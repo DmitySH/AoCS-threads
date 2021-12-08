@@ -123,6 +123,60 @@ Task5/fast:
 	$(MAKE) -f CMakeFiles/Task5.dir/build.make CMakeFiles/Task5.dir/build
 .PHONY : Task5/fast
 
+entities/Island.o: entities/Island.cpp.o
+
+.PHONY : entities/Island.o
+
+# target to build an object file
+entities/Island.cpp.o:
+	$(MAKE) -f CMakeFiles/Task5.dir/build.make CMakeFiles/Task5.dir/entities/Island.cpp.o
+.PHONY : entities/Island.cpp.o
+
+entities/Island.i: entities/Island.cpp.i
+
+.PHONY : entities/Island.i
+
+# target to preprocess a source file
+entities/Island.cpp.i:
+	$(MAKE) -f CMakeFiles/Task5.dir/build.make CMakeFiles/Task5.dir/entities/Island.cpp.i
+.PHONY : entities/Island.cpp.i
+
+entities/Island.s: entities/Island.cpp.s
+
+.PHONY : entities/Island.s
+
+# target to generate assembly for a file
+entities/Island.cpp.s:
+	$(MAKE) -f CMakeFiles/Task5.dir/build.make CMakeFiles/Task5.dir/entities/Island.cpp.s
+.PHONY : entities/Island.cpp.s
+
+entities/PirateGang.o: entities/PirateGang.cpp.o
+
+.PHONY : entities/PirateGang.o
+
+# target to build an object file
+entities/PirateGang.cpp.o:
+	$(MAKE) -f CMakeFiles/Task5.dir/build.make CMakeFiles/Task5.dir/entities/PirateGang.cpp.o
+.PHONY : entities/PirateGang.cpp.o
+
+entities/PirateGang.i: entities/PirateGang.cpp.i
+
+.PHONY : entities/PirateGang.i
+
+# target to preprocess a source file
+entities/PirateGang.cpp.i:
+	$(MAKE) -f CMakeFiles/Task5.dir/build.make CMakeFiles/Task5.dir/entities/PirateGang.cpp.i
+.PHONY : entities/PirateGang.cpp.i
+
+entities/PirateGang.s: entities/PirateGang.cpp.s
+
+.PHONY : entities/PirateGang.s
+
+# target to generate assembly for a file
+entities/PirateGang.cpp.s:
+	$(MAKE) -f CMakeFiles/Task5.dir/build.make CMakeFiles/Task5.dir/entities/PirateGang.cpp.s
+.PHONY : entities/PirateGang.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -159,6 +213,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... Task5"
+	@echo "... entities/Island.o"
+	@echo "... entities/Island.i"
+	@echo "... entities/Island.s"
+	@echo "... entities/PirateGang.o"
+	@echo "... entities/PirateGang.i"
+	@echo "... entities/PirateGang.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

@@ -4,6 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/mnt/c/Users/dm1tr/Desktop/AoCS-threads/Task5/entities/Island.cpp" "/mnt/c/Users/dm1tr/Desktop/AoCS-threads/Task5/cmake-build-debug/CMakeFiles/Task5.dir/entities/Island.cpp.o"
+  "/mnt/c/Users/dm1tr/Desktop/AoCS-threads/Task5/entities/PirateGang.cpp" "/mnt/c/Users/dm1tr/Desktop/AoCS-threads/Task5/cmake-build-debug/CMakeFiles/Task5.dir/entities/PirateGang.cpp.o"
   "/mnt/c/Users/dm1tr/Desktop/AoCS-threads/Task5/main.cpp" "/mnt/c/Users/dm1tr/Desktop/AoCS-threads/Task5/cmake-build-debug/CMakeFiles/Task5.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

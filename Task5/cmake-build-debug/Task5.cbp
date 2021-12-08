@@ -82,6 +82,18 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/mnt/c/Users/dm1tr/Desktop/AoCS-threads/Task5/entities/Island.cpp">
+			<Option target="Task5"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/dm1tr/Desktop/AoCS-threads/Task5/entities/Island.h">
+			<Option target="Task5"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/dm1tr/Desktop/AoCS-threads/Task5/entities/PirateGang.cpp">
+			<Option target="Task5"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/dm1tr/Desktop/AoCS-threads/Task5/entities/PirateGang.h">
+			<Option target="Task5"/>
+		</Unit>
 		<Unit filename="/mnt/c/Users/dm1tr/Desktop/AoCS-threads/Task5/main.cpp">
 			<Option target="Task5"/>
 		</Unit>

@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/Task5.dir/entities/Island.cpp.o"
+  "CMakeFiles/Task5.dir/entities/PirateGang.cpp.o"
   "CMakeFiles/Task5.dir/main.cpp.o"
   "Task5"
   "Task5.pdb"
