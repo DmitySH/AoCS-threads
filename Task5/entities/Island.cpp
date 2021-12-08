@@ -2,6 +2,7 @@
 #include "Island.h"
 
 void Island::out() const {
+    std::cout << '\n';
     for (int i = 0; i < vertical_size; ++i) {
         for (int j = 0; j < horizontal_size; ++j) {
             std::cout << island[i][j] << ' ';
@@ -25,9 +26,9 @@ int Island::random(int from, int to) {
 
 bool Island::checkNextPart(std::pair<int, int> current_cell) {
     if (current_cell == treasure) {
-        island[current_cell.first][current_cell.second] = 'X';
+        island[current_cell.second][current_cell.first] = 'X';
         return true;
     }
-    island[current_cell.first][current_cell.second] = '+';
+    island[current_cell.second][current_cell.first] = '+';
     return false;
 }

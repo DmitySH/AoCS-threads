@@ -3,11 +3,9 @@
 
 
 #include <string>
-
+#include <iostream>
 class Island {
 public:
-    Island() = default;
-
     Island(int horizontal_size, int vertical_size) {
         this->horizontal_size = horizontal_size;
         this->vertical_size = vertical_size;
@@ -23,7 +21,9 @@ public:
             }
         }
 
-        treasure = std::make_pair(horizontal_size, vertical_size);
+        treasure = std::make_pair(random(0, horizontal_size - 1),
+                                  random(0, vertical_size - 1));
+        std::cout << "Treasure at " << treasure.first << " " << treasure.second;
     }
 
     bool checkNextPart(std::pair<int, int> current_cell);
@@ -31,9 +31,10 @@ public:
     int getVerticalSize() const;
     int getHorizontalSize() const;
     void out() const;
+
 private:
-    int horizontal_size;
-    int vertical_size;
+    int horizontal_size{};
+    int vertical_size{};
     char **island;
     std::pair<int, int> treasure;
 

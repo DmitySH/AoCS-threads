@@ -1,52 +1,71 @@
 #include "PirateGang.h"
 #include <iostream>
 #include <thread>
+#include <mutex>
+
+std::mutex lock;
+std::mutex lock_queue;
+
+Status PirateGang::getStatus() {
+    return status_;
+}
+
 
 void PirateGang::setStatus(Status status) {
-    this->status = status;
-    std::cout << "!!!status" << this->status;
+    this->status_ = status;
 }
 
-std::pair<int, int> PirateGang::getNextCell() const {
-    return std::make_pair(PirateGang::last_move % island.getHorizontalSize(),
-                          PirateGang::last_move / island.getVerticalSize());
+std::pair<int, int> PirateGang::getNextCell(Island *island){
+    std::lock_guard<std::mutex> guard(lock);
+    auto next = std::make_pair(PirateGang::last_move % island->getHorizontalSize(),
+                               PirateGang::last_move / island->getHorizontalSize());
+    increaseLastMove();
+
+    return next;
 }
 
-void PirateGang::findTreasure(bool *found, std::queue<PirateGang> *workers) {
-//    std::cout << gang_number << " created\n";
+void PirateGang::findTreasure(bool *found, std::queue<PirateGang*> *workers) {
     while (true) {
-        while (status == Status::WAITING) {
-            this->status = this->status;
-            // Waiting.
-//            std::cout << "Waiting" << status << '\n';
+        while (status_ == Status::WAITING) {
+//            std::this_thread::sleep_for(std::chrono::milliseconds(500));
+//            std::cout << "Waiting" << status_ << '\n';
+
         }
 
-        if (status == Status::DONE) {
+        if (status_ == Status::DONE) {
+            std::cout << "Gang " << gang_number << " returned\n";
             return;
         }
+        std::pair<int, int> next_move = getNextCell(island);
 
-        std::cout << "Gang " << gang_number << " is searching now\n";
-        std::this_thread::sleep_for(std::chrono::milliseconds(10000 / number_of_pirates));
+        std::cout << "Gang " << getGangNumber()
+                  << " is looking for treasure at " <<
+                  next_move.first << ' '
+                  << next_move.second
+                  << "\n\n";
+        std::this_thread::sleep_for(std::chrono::milliseconds(5000 / number_of_pirates));
 
-        std::pair<int, int> next_move = getNextCell();
-
-        if (island.checkNextPart(next_move)) {
+        if (island->checkNextPart(next_move)) {
             std::cout << "YEAH! Gang " << gang_number << " found treasure on "
                       << next_move.first << ' ' << next_move.second;
             *found = true;
-
+            status_ = Status::DONE;
         } else {
             std::cout << "sad... Gang " << gang_number << " could not find anything interesting on "
                       << next_move.first << ' ' << next_move.second;
-            if (status != Status::DONE) {
-                status = Status::WAITING;
-            }
-            workers->push(*this);
-        }
-        ++PirateGang::last_move;
-        island.out();
 
-        std::cout << std::endl;
+            if (!*found) {
+                status_ = Status::WAITING;
+            } else {
+                status_ = Status::DONE;
+            }
+
+            {
+                std::lock_guard<std::mutex> guard(lock_queue);
+                workers->push(this);
+            }
+        }
+        island->out();
     }
 }
 
@@ -55,3 +74,7 @@ int PirateGang::getGangNumber() const {
 }
 
 int PirateGang::last_move = 0;
+
+void PirateGang::increaseLastMove() {
+    ++last_move;
+}
