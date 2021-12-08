@@ -1,0 +1,3 @@
+/mnt/c/Users/dm1tr/Desktop/AoCS-threads/Task5/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/mnt/c/Users/dm1tr/Desktop/AoCS-threads/Task5/cmake-build-debug/CMakeFiles/edit_cache.dir
+/mnt/c/Users/dm1tr/Desktop/AoCS-threads/Task5/cmake-build-debug/CMakeFiles/Task5.dir
