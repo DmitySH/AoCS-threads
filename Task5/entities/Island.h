@@ -26,6 +26,13 @@ public:
         std::cout << "Treasure at " << treasure.first << " " << treasure.second;
     }
 
+    ~Island(){
+        for (int i = 0; i < vertical_size; ++i) {
+            delete[] island[i];
+        }
+        delete[] island;
+    }
+
     bool checkNextPart(std::pair<int, int> current_cell);
 
     int getVerticalSize() const;
@@ -33,8 +40,8 @@ public:
     void out() const;
 
 private:
-    int horizontal_size{};
-    int vertical_size{};
+    int horizontal_size;
+    int vertical_size;
     char **island;
     std::pair<int, int> treasure;
 

@@ -1,7 +1,6 @@
 #include <iostream>
 #include <thread>
 #include "entities/PirateGang.h"
-#include "entities/Island.h"
 
 #include <queue>
 #include <string>
@@ -32,24 +31,24 @@ int parseInt(int min, int max) {
     return res;
 }
 
-void createGangs(std::vector<PirateGang*> *gangs, int pirates_number, Island *island) {
+void createGangs(std::vector<PirateGang *> *gangs, int pirates_number, Island *island) {
     int number_of_gangs = 0;
     while (pirates_number > 0) {
         std::cout << pirates_number << " pirates left\n";
         std::cout << "Next group" << number_of_gangs + 1 << " will contain " << "\n";
 
         int next_size = parseInt(1, pirates_number);
-        gangs->push_back(new PirateGang(number_of_gangs + 1, pirates_number, island));
+        gangs->push_back(new PirateGang(number_of_gangs + 1, next_size, island));
 
         pirates_number -= next_size;
         ++number_of_gangs;
     }
 }
 
-void searchForTreasure(std::vector<PirateGang*> gangs, Island *island) {
+void searchForTreasure(std::vector<PirateGang *> gangs, Island *island) {
     std::cout << "Searching started!\n";
     std::vector<std::thread> threads;
-    std::queue<PirateGang*> workers;
+    std::queue<PirateGang *> workers;
     bool *is_found = new bool(false);
 
     int max_cells = island->getVerticalSize() * island->getHorizontalSize();
@@ -61,22 +60,13 @@ void searchForTreasure(std::vector<PirateGang*> gangs, Island *island) {
         workers.push(gangs[i]);
     }
 
-    std::this_thread::sleep_for(std::chrono::milliseconds(100));
-
-
-//    workers.back()->setStatus(Status::WORKING);
-
-
-//    for (int i = 0; i < std::min(static_cast<int>(gangs.size()), max_cells); ++i) {
-//        workers.push(gangs[i]);
-//    }
+    std::this_thread::sleep_for(std::chrono::milliseconds(300));
 
     for (int i = 0; i < max_cells; ++i) {
         while (workers.empty()) {
             if (*is_found) {
                 break;
             }
-            std::this_thread::sleep_for(std::chrono::milliseconds(100));
 
             // Waiting.
         }
@@ -89,7 +79,7 @@ void searchForTreasure(std::vector<PirateGang*> gangs, Island *island) {
         current->setStatus(Status::WORKING);
         workers.pop();
     }
-    while (!*is_found){
+    while (!*is_found) {
 
     }
 
@@ -101,16 +91,18 @@ void searchForTreasure(std::vector<PirateGang*> gangs, Island *island) {
         trs[i].join();
     }
     std::cout << "DONE!";
+    delete is_found;
+    delete[] trs;
 }
 
 int main() {
     srand(time(0));
 
-    std::cout << "Enter horizontal size [0; 100000]:\n";
-    int horizontal_size = parseInt(1, 100000);
+    std::cout << "Enter horizontal size [0; 100]:\n";
+    int horizontal_size = parseInt(1, 100);
 
-    std::cout << "Enter vertical size [0; 100000]:\n";
-    int vertical_size = parseInt(1, 100000);
+    std::cout << "Enter vertical size [0; 100]:\n";
+    int vertical_size = parseInt(1, 100);
 
     Island *island = new Island(horizontal_size, vertical_size);
     island->out();
@@ -118,14 +110,14 @@ int main() {
     std::cout << "Enter number of pirates:\n";
     int pirates_number = parseInt(1, 300);
 
-    std::vector<PirateGang*> gangs;
+    std::vector<PirateGang *> gangs;
     createGangs(&gangs, pirates_number, island);
 
     searchForTreasure(gangs, island);
 
-//    PirateGang pirate;
-//
-//    std::thread(&PirateGang::findTreasure, std::ref(pirate));
-//    name.join();
+    for (auto gang: gangs) {
+        delete gang;
+    }
+    delete island;
     return 0;
 }

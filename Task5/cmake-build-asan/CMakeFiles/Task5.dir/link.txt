@@ -1,0 +1,1 @@
+/usr/bin/c++  -g -fsanitize=address,undefined -fno-sanitize-recover=all   CMakeFiles/Task5.dir/main.cpp.o CMakeFiles/Task5.dir/entities/PirateGang.cpp.o CMakeFiles/Task5.dir/entities/Island.cpp.o  -o Task5  -lpthread 

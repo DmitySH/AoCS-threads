@@ -1,5 +1,9 @@
 #include <iostream>
+#include <mutex>
 #include "Island.h"
+#include "PirateGang.h"
+
+std::mutex lock_island;
 
 void Island::out() const {
     std::cout << '\n';
@@ -25,10 +29,16 @@ int Island::random(int from, int to) {
 }
 
 bool Island::checkNextPart(std::pair<int, int> current_cell) {
+    std::lock_guard<std::mutex> guard(lock_island);
     if (current_cell == treasure) {
         island[current_cell.second][current_cell.first] = 'X';
+        out();
         return true;
     }
     island[current_cell.second][current_cell.first] = '+';
+    {
+        std::lock_guard<std::mutex> guard(PirateGang::lock_out);
+        out();
+    }
     return false;
 }
