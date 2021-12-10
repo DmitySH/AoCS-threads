@@ -12,16 +12,6 @@ string
 iostream
 -
 
-/mnt/c/Users/dm1tr/Desktop/AoCS-threads/Task5/entities/PirateGang.cpp
-PirateGang.h
-/mnt/c/Users/dm1tr/Desktop/AoCS-threads/Task5/entities/PirateGang.h
-iostream
--
-thread
--
-mutex
--
-
 /mnt/c/Users/dm1tr/Desktop/AoCS-threads/Task5/entities/PirateGang.h
 queue
 -
@@ -29,4 +19,20 @@ mutex
 -
 Island.h
 /mnt/c/Users/dm1tr/Desktop/AoCS-threads/Task5/entities/Island.h
+
+/mnt/c/Users/dm1tr/Desktop/AoCS-threads/Task5/main.cpp
+iostream
+-
+thread
+-
+entities/PirateGang.h
+/mnt/c/Users/dm1tr/Desktop/AoCS-threads/Task5/entities/PirateGang.h
+queue
+-
+string
+-
+mutex
+-
+fstream
+-
 

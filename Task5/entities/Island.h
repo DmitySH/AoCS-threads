@@ -23,7 +23,7 @@ public:
 
         treasure = std::make_pair(random(0, horizontal_size - 1),
                                   random(0, vertical_size - 1));
-        std::cout << "Treasure at " << treasure.first << " " << treasure.second;
+        std::cout << "Treasure at " << treasure.first << " " << treasure.second << "  ";
     }
 
     ~Island(){
