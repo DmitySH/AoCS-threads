@@ -35,7 +35,7 @@ bool Island::checkNextPart(std::pair<int, int> current_cell) {
         out();
         return true;
     }
-    island[current_cell.second][current_cell.first] = '+';
+    island[current_cell.second][current_cell.first] = 'O';
     {
         std::lock_guard<std::mutex> guard(PirateGang::lock_out);
         out();
