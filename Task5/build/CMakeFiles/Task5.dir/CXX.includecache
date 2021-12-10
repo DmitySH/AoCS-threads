@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/eva/Desktop/AoCS-threads/Task5/entities/Island.cpp
+iostream
+-
+mutex
+-
+Island.h
+/home/eva/Desktop/AoCS-threads/Task5/entities/Island.h
+PirateGang.h
+/home/eva/Desktop/AoCS-threads/Task5/entities/PirateGang.h
+
+/home/eva/Desktop/AoCS-threads/Task5/entities/Island.h
+string
+-
+iostream
+-
+
+/home/eva/Desktop/AoCS-threads/Task5/entities/PirateGang.h
+queue
+-
+mutex
+-
+Island.h
+/home/eva/Desktop/AoCS-threads/Task5/entities/Island.h
+

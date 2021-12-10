@@ -1,0 +1,3 @@
+/home/eva/Desktop/AoCS-threads/Task5/build/CMakeFiles/rebuild_cache.dir
+/home/eva/Desktop/AoCS-threads/Task5/build/CMakeFiles/edit_cache.dir
+/home/eva/Desktop/AoCS-threads/Task5/build/CMakeFiles/Task5.dir
